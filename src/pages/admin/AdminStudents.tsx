@@ -122,37 +122,44 @@ const AdminStudents = () => {
               </tr>
             </thead>
             <tbody>
-              {students && students.map((student: Student, index: number) => (
-                <tr
-                  key={student._id}
-                  className={`transition-colors duration-200 ${
-                    index % 2 === 0
-                      ? "bg-[#BBD2CB] text-[#4F4F4F]"
-                      : "bg-white text-[#4F4F4F]"
-                  }`}
-                >
-                  <td className="p-4">
-                    <img
-                      src={student.profilePic}
-                      alt={student.name}
-                      className="w-10 h-10 rounded-full object-cover"
-                    />
-                  </td>
-                  <td className="p-4">{student.name}</td>
-                  <td className="p-4">{student.email}</td>
-                  <td className="p-4">{student.age}</td>
-                  <td className="p-4">{student.phone}</td>
-                  <td className="p-4">active</td>
-                  <td className="p-4 text-center">
-                    <button
-                      className="text-red-500 hover:text-red-700 transition font-medium"
-                      onClick={() => handleDelete(student._id)}
-                    >
-                      <DeleteButton />
-                    </button>
-                  </td>
-                </tr>
-              ))}
+              {students &&
+                students.map((student: Student, index: number) => (
+                  <tr
+                    key={student._id}
+                    className={`transition-colors duration-200 ${
+                      index % 2 === 0
+                        ? "bg-[#BBD2CB] text-[#4F4F4F]"
+                        : "bg-white text-[#4F4F4F]"
+                    }`}
+                  >
+                    <td className="p-4">
+                      {student.profilePic ? (
+                        <img
+                          src={student.profilePic}
+                          alt={student.name}
+                          className="w-10 h-10 rounded-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-white text-sm font-semibold">
+                          {student.name.charAt(0).toUpperCase()}
+                        </div>
+                      )}
+                    </td>
+                    <td className="p-4">{student.name}</td>
+                    <td className="p-4">{student.email}</td>
+                    <td className="p-4">{student.age}</td>
+                    <td className="p-4">{student.phone}</td>
+                    <td className="p-4">active</td>
+                    <td className="p-4 text-center">
+                      <button
+                        className="text-red-500 hover:text-red-700 transition font-medium"
+                        onClick={() => handleDelete(student._id)}
+                      >
+                        <DeleteButton />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               {students?.length === 0 && (
                 <tr>
                   <td colSpan={7} className="text-center py-6 text-gray-500">

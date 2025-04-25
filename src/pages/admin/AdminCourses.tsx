@@ -158,18 +158,28 @@ const AdminCoursesPage = () => {
         </div>
       </div>
       <br />
-      <div className="flex items-center gap-2">
-        <input
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-          type="text"
-          placeholder="Search..."
-          className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6a6969]"
-        />
-        <button className="bg-[#5faba5] text-white p-2 rounded-lg hover:bg-[#40595c]" onClick={handleSearchClick}>
-          <SearchIcon />
-        </button>
-      </div>
+      <form
+  onSubmit={(e) => {
+    e.preventDefault();
+    handleSearchClick();
+  }}
+  className="flex items-center gap-2"
+>
+  <input
+    value={searchInput}
+    onChange={(e) => setSearchInput(e.target.value)}
+    type="text"
+    placeholder="Search..."
+    className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6a6969]"
+  />
+  <button
+    type="submit"
+    className="bg-[#5faba5] text-white p-2 rounded-lg hover:bg-[#40595c]"
+  >
+    <SearchIcon />
+  </button>
+</form>
+
       <div>
         <HoverEffect items={transformedCourses} />
       </div>

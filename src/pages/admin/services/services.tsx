@@ -105,7 +105,7 @@ export const fetchCourseDetails = async (courseId: string): Promise<CourseDetail
 };
 export const deleteuser = async (userId: String) => {
   console.log("deleteuser:", userId)
-  const response = await axiosInstance.post("http://localhost:5000/api/user/delete-user", userId)
+  const response = await axiosInstance.post("http://localhost:5000/api/user/delete-user", {userId})
   console.log(response.data)
   return response.data
 }
